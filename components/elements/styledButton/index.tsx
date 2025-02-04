@@ -1,3 +1,4 @@
+import { StyledButtonProps } from "../../../types/elements/StyledButtonProps";
 import * as S from "./style";
 
 export default function StyledButton({

@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Signin from "./screen/auth/signin";
-import Start from "./screen/start";
+import StartPage from "./screens/start";
+import SigninPage from "./screens/auth/signin";
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -10,12 +10,12 @@ export default function App() {
       <Stack.Navigator initialRouteName="Start">
         <Stack.Screen
           name="Start"
-          component={Start}
+          component={StartPage}
           options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Signin"
-          component={Signin}
+          component={SigninPage}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

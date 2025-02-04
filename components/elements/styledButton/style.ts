@@ -6,8 +6,8 @@ const { height } = Dimensions.get("window");
 export const Button = styled.TouchableOpacity`
   background-color: ${(props) => props.buttonColor};
   width: 80%;
-  height: ${height * 0.07}px; /* 전체 높이의 8% (약 70px) */
-  border-radius: ${height * 0.01}px; /* 동적 border-radius */
+  height: ${height * 0.07}px;
+  border-radius: ${height * 0.01}px;
   display: flex;
   justify-content: center;
   align-items: center;

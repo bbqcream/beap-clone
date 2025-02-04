@@ -1,4 +1,4 @@
-interface StyledButtonProps {
+export interface StyledButtonProps {
   buttonName: string;
   buttonColor: string;
   action: () => void;

@@ -1,5 +1,7 @@
 import styled from "styled-components/native";
 import { COLOR } from "../../style/color/color";
+import { Dimensions } from "react-native";
+const { height } = Dimensions.get("window");
 
 export const Container = styled.SafeAreaView`
   width: 100%;
@@ -10,4 +12,7 @@ export const Container = styled.SafeAreaView`
   justify-content: space-around;
 `;
 
-export const Icon = styled.Image``;
+export const Icon = styled.Image`
+  width: ${height * 0.21}px;
+  height: ${height * 0.2}px;
+`;

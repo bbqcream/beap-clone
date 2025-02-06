@@ -17,7 +17,7 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="Signin"
+            name="Login"
             component={LoginPage}
             options={{ headerShown: false }}
           />

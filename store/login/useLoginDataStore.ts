@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { LoginForm } from "../../types/auth/loginForm";
+import { LoginForm } from "../../types/props/auth/loginForm";
 import { LoginDataState } from "../../types/store/login/loginDataState";
 
 export const useLoginDataStore = create<LoginDataState>((set) => ({

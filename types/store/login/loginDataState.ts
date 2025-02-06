@@ -1,4 +1,4 @@
-import { LoginForm } from "../../auth/loginForm";
+import { LoginForm } from "../../props/auth/loginForm";
 
 export interface LoginDataState {
   loginData: LoginForm;

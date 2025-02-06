@@ -11,7 +11,7 @@ const StartButton = () => {
         buttonName="로그인"
         buttonColor={COLOR.White}
         textColor={COLOR.Black}
-        action={handleNavigation("Signin")}
+        action={handleNavigation("Login")}
       />
       <StyledButton
         buttonName="회원가입"

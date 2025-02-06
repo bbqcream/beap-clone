@@ -1,4 +1,6 @@
 export interface RootStackParamList {
-  Signin: any;
+  Home: any;
+  Main: any;
+  Login: any;
   Signup: any;
 }

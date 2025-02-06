@@ -7,7 +7,7 @@ import ErrorText from "../../elements/errorText";
 import { useLoginDataStore } from "../../../store/login/useLoginDataStore";
 import useLogin from "../../../hooks/useLogin";
 
-const Signin = () => {
+const Login = () => {
   const { loginData } = useLoginDataStore();
   const { handleData } = useLogin();
   return (
@@ -44,4 +44,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Login;

@@ -1,10 +1,8 @@
 import { useLoadingStore } from "../../store/global/useLoadingStore";
-import { API_KEY } from "@env";
 import { useMutation } from "@tanstack/react-query";
+import { API_KEY } from "@env";
 import { useLoginDataStore } from "../../store/login/useLoginDataStore";
 import axios from "axios";
-import { BaseResponse } from "../../types/response/baseResponse";
-import { LoginResponse } from "../../types/response/loginResponse";
 import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
@@ -15,33 +13,22 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const useLoginMutation = () => {
   const { setError } = useErrorStore();
-  const { setLoading } = useLoadingStore();
+  const { loading, setLoading } = useLoadingStore();
   const handleNavigation = useHandleNavigation();
   const { loginData } = useLoginDataStore();
 
-  const mutation = useMutation<BaseResponse<LoginResponse>, Error, void>({
+  return useMutation({
     mutationFn: async () => {
-      try {
-        const { data } = await axios.post<BaseResponse<LoginResponse>>(
-          `${API_KEY}/auth/sign-in`,
-          loginData
-        );
-        if (!data || !data.data) {
-          throw new Error("유효하지 않은 응답 데이터입니다.");
-        }
-        await AsyncStorage.setItem(ACCESS_TOKEN_KEY, data.data.accessToken);
-        await AsyncStorage.setItem(REFRESH_TOKEN_KEY, data.data.refreshToken);
-        return data;
-      } catch (error) {
-        console.error("로그인 요청 중 오류 발생:", error);
-        throw error;
-      }
-    },
-    onMutate: () => {
-      setLoading(true);
+      const { data } = await axios.post(`${API_KEY}/auth/sign-in`, loginData);
+      await AsyncStorage.setItem(ACCESS_TOKEN_KEY, data.data.accessToken);
+      await AsyncStorage.setItem(REFRESH_TOKEN_KEY, data.data.refreshToken);
+      return data;
     },
     onSuccess: () => {
       handleNavigation("Main");
+    },
+    onMutate: () => {
+      setLoading(true);
     },
     onError: (error) => {
       setError(error);
@@ -51,11 +38,6 @@ const useLoginMutation = () => {
       setLoading(false);
     },
   });
-
-  return {
-    onSubmit: mutation.mutate,
-    isError: mutation.isError,
-  };
 };
 
 export default useLoginMutation;

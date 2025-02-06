@@ -9,7 +9,7 @@ import useLogin from "../../../hooks/useLogin";
 
 const Login = () => {
   const { loginData } = useLoginDataStore();
-  const { handleData } = useLogin();
+  const { handleData, onSubmit } = useLogin();
   return (
     <S.Container>
       <S.InputWrapper>
@@ -26,6 +26,7 @@ const Login = () => {
           value={loginData.password}
           onChange={(text) => handleData("password", text)}
           error={false}
+          secureTextEntry={true}
         />
       </S.InputWrapper>
       <S.OptionWrapper>
@@ -38,7 +39,7 @@ const Login = () => {
         textColor={COLOR.White}
         buttonColor={COLOR.Dark}
         buttonName="로그인"
-        action={() => console.log("로그인!")}
+        action={onSubmit}
       />
     </S.Container>
   );

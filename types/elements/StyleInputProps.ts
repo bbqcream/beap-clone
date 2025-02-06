@@ -4,4 +4,5 @@ export interface StyledInputProps {
   onChange: (text: any) => void;
   name: string;
   error: boolean;
+  secureTextEntry?: boolean;
 }

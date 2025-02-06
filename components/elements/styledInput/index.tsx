@@ -7,6 +7,7 @@ export default function StyledInput({
   onChange,
   name,
   error,
+  secureTextEntry,
 }: StyledInputProps) {
   return (
     <S.Input
@@ -15,6 +16,7 @@ export default function StyledInput({
       onChange={onChange}
       name={name}
       $isError={error}
+      secureTextEntry={secureTextEntry}
     />
   );
 }

@@ -1,6 +1,5 @@
 import { useLoadingStore } from "../../store/global/useLoadingStore";
 import { useMutation } from "@tanstack/react-query";
-import { API_KEY } from "@env";
 import { useLoginDataStore } from "../../store/login/useLoginDataStore";
 import axios from "axios";
 import {

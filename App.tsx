@@ -1,12 +1,11 @@
 import React from 'react';
-import Start from './src/screens/start';
-import {Text} from 'react-native';
 import Select from './src/screens/select';
+import Login from './src/screens/login';
 
 function App(): React.JSX.Element {
   return (
     <>
-      <Select />
+      <Login />
     </>
   );
 }

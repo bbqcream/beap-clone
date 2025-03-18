@@ -41,6 +41,12 @@ const Main = () => {
             </TouchableOpacity>
           </View>
         </View>
+        <View style={styles.checkWrap}>
+          <Text style={styles.title}>출석 현황</Text>
+          <Text>출석 상태 : 나르샤</Text>
+          <Text>출석 장소 : LAB 20실</Text>
+          <Text>출석 시간 : 7:06</Text>
+        </View>
       </View>
     </SafeAreaView>
   );

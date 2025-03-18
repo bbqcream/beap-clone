@@ -1,15 +1,12 @@
 import React from 'react';
-import Main from './src/screens/main';
-import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import TabNavigation from './src/navigations/tabNavigation';
+import {NavigationContainer} from '@react-navigation/native';
 
 function App(): React.JSX.Element {
-  const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Main" component={Main} />
-      </Stack.Navigator>
+      <TabNavigation />
     </NavigationContainer>
   );
 }

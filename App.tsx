@@ -1,12 +1,16 @@
 import React from 'react';
-import Select from './src/screens/select';
-import Login from './src/screens/login';
+import Main from './src/screens/main';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 function App(): React.JSX.Element {
+  const Stack = createNativeStackNavigator();
   return (
-    <>
-      <Login />
-    </>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Main" component={Main} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

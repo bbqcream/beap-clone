@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Dimensions,
   Image,
+  Keyboard,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -13,6 +14,17 @@ import {
 const {width, height} = Dimensions.get('window');
 
 const Login = () => {
+  const [em, setEm] = useState('');
+  const [pw, setPw] = useState('');
+
+  const handleEmail = (text: string) => {
+    setEm(text);
+  };
+
+  const handlePassword = (text: string) => {
+    setPw(text);
+  };
+
   return (
     <SafeAreaView style={styles.main}>
       <TouchableOpacity style={styles.arrowOpa}>
@@ -25,11 +37,20 @@ const Login = () => {
         <View style={styles.loginWrap}>
           <Text style={styles.loginText}>로그인</Text>
           <View style={styles.inputWrap}>
-            <TextInput placeholder="이메일" style={styles.input} />
             <TextInput
+              placeholder="이메일"
+              style={styles.input}
+              onSubmitEditing={Keyboard.dismiss}
+              value={em}
+              onChangeText={handleEmail}
+            />
+            <TextInput
+              onSubmitEditing={Keyboard.dismiss}
               secureTextEntry={true}
               placeholder="비밀번호"
               style={styles.input}
+              value={pw}
+              onChangeText={handlePassword}
             />
           </View>
           <TouchableOpacity>

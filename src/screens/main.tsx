@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -12,40 +12,57 @@ import {
 const {width, height} = Dimensions.get('window');
 
 const Main = () => {
+  const [attend, setAttend] = useState(false);
+  const handleAttend = () => {
+    setAttend(!attend);
+  };
   return (
     <SafeAreaView style={styles.main}>
       <View style={styles.container}>
-        <View style={styles.topNav}>
-          <TouchableOpacity>
-            <Image
-              style={styles.arrowImg}
-              source={require('../assets/beep.png')}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image
-              style={styles.infoImg}
-              source={require('../assets/info.png')}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.checkWrap}>
-          <Text style={styles.title}>출석체크</Text>
-          <View style={styles.checkStatWrap}>
-            <Image
-              source={require('../assets/phone.png')}
-              style={styles.phone}
-            />
-            <TouchableOpacity style={styles.checkButton}>
-              <Text style={styles.checkText}>출석하기</Text>
+        <View style={styles.contents}>
+          <View style={styles.topNav}>
+            <TouchableOpacity>
+              <Image
+                style={styles.logoImg}
+                source={require('../assets/beep.png')}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Image
+                style={styles.infoImg}
+                source={require('../assets/info.png')}
+              />
             </TouchableOpacity>
           </View>
-        </View>
-        <View style={styles.checkWrap}>
-          <Text style={styles.title}>출석 현황</Text>
-          <Text>출석 상태 : 나르샤</Text>
-          <Text>출석 장소 : LAB 20실</Text>
-          <Text>출석 시간 : 7:06</Text>
+          <View style={styles.checkWrap}>
+            <Text style={styles.title}>출석체크</Text>
+            <View style={styles.checkStatWrap}>
+              <Image source={require('../assets/zzz.gif')} style={styles.zzz} />
+              <Image
+                source={require('../assets/phone.png')}
+                style={styles.phone}
+              />
+              <TouchableOpacity
+                onPress={() => handleAttend()}
+                style={{
+                  width: '100%',
+                  alignItems: 'center',
+                  paddingVertical: height * 0.025,
+                  borderRadius: 5,
+                  backgroundColor: attend ? '#32A89C' : '#FF6C6C',
+                }}>
+                <Text style={styles.checkText}>
+                  {attend ? '출석하기' : '퇴실하기'}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={styles.checkWrap}>
+            <Text style={styles.title}>출석 현황</Text>
+            <Text>출석 상태 : 나르샤</Text>
+            <Text>출석 장소 : LAB 20실</Text>
+            <Text>출석 시간 : 7:06</Text>
+          </View>
         </View>
       </View>
     </SafeAreaView>
@@ -63,15 +80,24 @@ const styles = StyleSheet.create({
   },
   container: {
     width: '80%',
+    position: 'relative',
+    height: '100%',
+  },
+  contents: {
+    position: 'absolute',
+    display: 'flex',
+    gap: height * 0.025,
+    top: height * 0.04,
   },
   topNav: {
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  arrowImg: {
-    width: width * 0.1,
+  logoImg: {
+    width: width * 0.11,
     height: width * 0.1,
   },
   infoImg: {
@@ -85,9 +111,17 @@ const styles = StyleSheet.create({
   checkWrap: {
     width: '100%',
     paddingVertical: height * 0.03,
-    paddingHorizontal: width * 0.04,
+    paddingHorizontal: width * 0.05,
     backgroundColor: 'white',
     borderRadius: 10,
+    gap: height * 0.02,
+  },
+  zzz: {
+    width: width * 0.15,
+    height: width * 0.1,
+    position: 'absolute',
+    top: height * -0.03,
+    right: width * 0.1,
   },
   phone: {
     width: width * 0.4,
@@ -97,13 +131,7 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     alignItems: 'center',
-  },
-  checkButton: {
-    width: '100%',
-    alignItems: 'center',
-    paddingVertical: height * 0.025,
-    backgroundColor: '#32A89C',
-    borderRadius: 5,
+    gap: height * 0.02,
   },
   checkText: {
     color: 'white',

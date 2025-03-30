@@ -47,7 +47,7 @@ const Main = () => {
                 style={{
                   width: '100%',
                   alignItems: 'center',
-                  paddingVertical: height * 0.025,
+                  paddingVertical: height * 0.02,
                   borderRadius: 5,
                   backgroundColor: attend ? '#32A89C' : '#FF6C6C',
                 }}>

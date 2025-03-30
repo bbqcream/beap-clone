@@ -1,16 +1,12 @@
 import React from 'react';
-import {
-  Dimensions,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Dimensions, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import Button from '../components/button';
+import {useNavigation} from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('window');
 
 const Move = () => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.main}>
       <View style={styles.container}>
@@ -20,12 +16,19 @@ const Move = () => {
           </View>
           <View style={styles.checkWrap}>
             <Text style={styles.checkText}>실 이동 신청 목록</Text>
+            <View style={styles.checkContainer}>
+              <Text style={styles.checkTitle}>LAB 21, 22실 -{'> '}LAB 2실</Text>
+              <Text style={styles.checkTime}>10교시 - 11교시</Text>
+              <Text style={styles.checkDetail}>
+                안녕하세요 안녕하세요 안ㄴ여핫ㅔ요
+              </Text>
+            </View>
           </View>
-          <TouchableOpacity style={styles.checkButton}>
-            <Text style={{color: 'white', fontSize: width * 0.04}}>
-              신청하기
-            </Text>
-          </TouchableOpacity>
+          <Button
+            title="신청하기"
+            action={() => navigation.navigate('실신청')}
+            color="#323A45"
+          />
         </View>
       </View>
     </SafeAreaView>
@@ -58,8 +61,28 @@ const styles = StyleSheet.create({
     top: height * 0.04,
   },
   checkText: {
+    fontWeight: 800,
+    fontSize: width * 0.055,
+  },
+  checkContainer: {
+    backgroundColor: '#FBFBFB',
+    paddingHorizontal: width * 0.03,
+    paddingVertical: width * 0.02,
+    display: 'flex',
+    gap: width * 0.01,
+    borderRadius: 5,
+  },
+  checkTitle: {
+    fontSize: width * 0.045,
     fontWeight: 600,
-    fontSize: width * 0.04,
+  },
+  checkTime: {
+    fontSize: width * 0.035,
+    fontWeight: 400,
+  },
+  checkDetail: {
+    fontSize: width * 0.03,
+    fontWeight: 200,
   },
   topNav: {
     width: '100%',
@@ -70,6 +93,7 @@ const styles = StyleSheet.create({
   },
   checkWrap: {
     width: '100%',
+    minHeight: height * 0.5,
     paddingVertical: height * 0.03,
     paddingHorizontal: width * 0.05,
     backgroundColor: 'white',

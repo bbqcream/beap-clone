@@ -19,7 +19,7 @@ const TabNavigation = () => {
         },
       }}>
       <BottomTab.Screen
-        name="실 이동"
+        name="실이동"
         component={Move}
         options={{
           headerShown: false,

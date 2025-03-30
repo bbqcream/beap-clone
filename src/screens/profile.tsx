@@ -24,10 +24,6 @@ const Profile = () => {
               <Text style={styles.formValue}>김성한</Text>
             </View>
             <View style={styles.form}>
-              <Text style={styles.formText}>이메일</Text>
-              <Text style={styles.formValue}>google@dgsw.hs.kr</Text>
-            </View>
-            <View style={styles.form}>
               <Text style={styles.formText}>실</Text>
               <Text style={styles.formValue}>LAB 9, 10</Text>
             </View>
@@ -36,14 +32,6 @@ const Profile = () => {
               <Text style={styles.formValue}>1학년 2반 10번</Text>
             </View>
           </View>
-          <TouchableOpacity style={styles.checkWrap}>
-            <Text style={{fontSize: width * 0.035}}>비밀번호 변경</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.checkWrap}>
-            <Text style={{fontSize: width * 0.035, color: '#D53333'}}>
-              회원탈퇴
-            </Text>
-          </TouchableOpacity>
           <TouchableOpacity style={styles.checkWrap}>
             <Text style={{color: '#FF6C6C', fontSize: width * 0.035}}>
               로그아웃

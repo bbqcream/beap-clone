@@ -3,5 +3,6 @@ interface CustomDropdownProps {
   setItems: React.Dispatch<
     React.SetStateAction<Array<{label: string; value: string}>>
   >;
-  placeholder: String;
+  placeholder: string;
+  zindex: number;
 }

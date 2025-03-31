@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     paddingVertical: width * 0.02,
     display: 'flex',
     gap: width * 0.01,
-    borderRadius: 5,
+    borderRadius: 10,
   },
   checkTitle: {
     fontSize: width * 0.045,
@@ -97,14 +97,14 @@ const styles = StyleSheet.create({
     paddingVertical: height * 0.03,
     paddingHorizontal: width * 0.05,
     backgroundColor: 'white',
-    borderRadius: 10,
+    borderRadius: 20,
     gap: height * 0.03,
   },
   checkButton: {
     paddingVertical: height * 0.03,
     paddingHorizontal: width * 0.05,
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 20,
     backgroundColor: '#323A45',
   },
   form: {

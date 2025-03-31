@@ -6,6 +6,7 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
   items,
   setItems,
   placeholder,
+  zindex,
 }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -13,6 +14,7 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
   return (
     <View>
       <DropDownPicker
+        zIndex={zindex}
         open={open}
         value={value}
         items={items}

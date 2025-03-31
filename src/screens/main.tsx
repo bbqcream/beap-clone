@@ -59,7 +59,12 @@ const Main = () => {
           </View>
           <View style={styles.checkWrap}>
             <Text style={styles.title}>출석 현황</Text>
-            <Text>출석 상태 : 나르샤</Text>
+            <Text>
+              출석 상태 :{' '}
+              <Text style={{color: !attend ? '#32A89C' : '#FF6C6C'}}>
+                {attend ? 'X' : 'O'}
+              </Text>
+            </Text>
             <Text>출석 장소 : LAB 20실</Text>
             <Text>출석 시간 : 7:06</Text>
           </View>
@@ -113,7 +118,7 @@ const styles = StyleSheet.create({
     paddingVertical: height * 0.03,
     paddingHorizontal: width * 0.05,
     backgroundColor: 'white',
-    borderRadius: 10,
+    borderRadius: 20,
     gap: height * 0.02,
   },
   zzz: {

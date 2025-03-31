@@ -52,6 +52,7 @@ const MoveApply = () => {
             <View style={styles.formWrap}>
               <Text style={styles.smallTitle}>이동 실</Text>
               <CustomDropdown
+                zindex={999}
                 items={timeItem}
                 setItems={setTimeItem}
                 placeholder="이동할 실을 선택하세요."
@@ -60,6 +61,7 @@ const MoveApply = () => {
             <View style={styles.formWrap}>
               <Text style={styles.smallTitle}>이동 교시</Text>
               <CustomDropdown
+                zindex={1}
                 items={timeItem}
                 setItems={setTimeItem}
                 placeholder="교시를 선택하세요."
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
     height: height * 0.1,
     paddingHorizontal: width * 0.02,
     borderRadius: 5,
-    fontSize: 10,
+    fontSize: width * 0.03,
   },
   topNav: {
     width: '100%',
@@ -137,14 +139,14 @@ const styles = StyleSheet.create({
     paddingVertical: height * 0.03,
     paddingHorizontal: width * 0.05,
     backgroundColor: 'white',
-    borderRadius: 10,
+    borderRadius: 20,
     gap: height * 0.03,
   },
   checkButton: {
     paddingVertical: height * 0.03,
     paddingHorizontal: width * 0.05,
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 20,
     backgroundColor: '#323A45',
   },
 });

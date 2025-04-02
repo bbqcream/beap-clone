@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -10,56 +9,42 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {useLogin} from '../../hooks/useLogin';
 
 const {width, height} = Dimensions.get('window');
 
 const Login = () => {
-  const [em, setEm] = useState('');
-  const [pw, setPw] = useState('');
-
-  const handleEmail = (text: string) => {
-    setEm(text);
-  };
-
-  const handlePassword = (text: string) => {
-    setPw(text);
-  };
+  const {id, setId, pw, setPw, handleLogin, loading, error} = useLogin();
 
   return (
     <SafeAreaView style={styles.main}>
-      <TouchableOpacity style={styles.arrowOpa}>
-        <Image
-          style={styles.arrowImg}
-          source={require('../assets/arrow.png')}
-        />
-      </TouchableOpacity>
-      <View style={styles.loginContainer}>
-        <View style={styles.loginWrap}>
-          <Text style={styles.loginText}>로그인</Text>
-          <View style={styles.inputWrap}>
-            <TextInput
-              placeholder="이메일"
-              style={styles.input}
-              onSubmitEditing={Keyboard.dismiss}
-              value={em}
-              onChangeText={handleEmail}
-            />
-            <TextInput
-              onSubmitEditing={Keyboard.dismiss}
-              secureTextEntry={true}
-              placeholder="비밀번호"
-              style={styles.input}
-              value={pw}
-              onChangeText={handlePassword}
-            />
-          </View>
-          <TouchableOpacity>
-            <Text style={styles.forgotPassword}>비밀번호를 잊으셨나요?</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.loginButton}>
-            <Text style={styles.loginButtonText}>로그인</Text>
-          </TouchableOpacity>
+      <Image style={styles.logo} source={require('../assets/beep.png')} />
+      <View style={styles.loginWrap}>
+        <Text style={styles.loginText}>
+          <Text style={{color: '#0083F0'}}>도담도담</Text> 계정으로 시작하기
+        </Text>
+        <View style={styles.inputWrap}>
+          <TextInput
+            placeholder="아이디"
+            style={styles.input}
+            onSubmitEditing={Keyboard.dismiss}
+            value={id}
+            onChangeText={setId}
+          />
+          <TextInput
+            onSubmitEditing={Keyboard.dismiss}
+            secureTextEntry={true}
+            placeholder="비밀번호"
+            style={styles.input}
+            value={pw}
+            onChangeText={setPw}
+          />
         </View>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => handleLogin()}>
+          <Text style={styles.loginButtonText}>로그인</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -70,40 +55,25 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     display: 'flex',
-    justifyContent: 'space-around',
+    flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#323A45',
-    position: 'relative',
+    justifyContent: 'center',
+    backgroundColor: '#FCFCFC',
   },
-  arrowOpa: {
-    position: 'absolute',
-    top: height * 0.08,
-    left: width * 0.08,
-  },
-  arrowImg: {
-    width: width * 0.1,
-    height: width * 0.1,
-  },
-  loginContainer: {
-    position: 'absolute',
-    bottom: 0,
-    backgroundColor: 'white',
-    height: height * 0.7,
-    borderTopLeftRadius: 25,
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
+  logo: {
+    width: width * 0.22,
+    height: width * 0.2,
   },
   loginWrap: {
     width: width * 0.8,
     paddingVertical: height * 0.05,
     height: '90%',
     display: 'flex',
+    gap: height * 0.02,
     flexDirection: 'column',
-    justifyContent: 'space-between',
   },
   loginText: {
-    fontSize: width * 0.07,
+    fontSize: width * 0.05,
     fontWeight: '600',
   },
   inputWrap: {
@@ -114,32 +84,25 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     paddingVertical: height * 0.03,
-    paddingHorizontal: width * 0.02,
+    paddingHorizontal: width * 0.03,
     borderColor: '#B7B7B7',
     borderWidth: 1,
-    borderRadius: 5,
-  },
-  forgotPassword: {
-    display: 'flex',
-    alignSelf: 'flex-end',
-    color: '#323A45',
-    textDecorationLine: 'underline',
-    textDecorationColor: '#323A45',
+    borderRadius: 20,
   },
   loginButton: {
     width: '100%',
-    paddingVertical: height * 0.03,
+    paddingVertical: height * 0.025,
     paddingHorizontal: width * 0.02,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#323A45',
-    borderRadius: 5,
+    backgroundColor: '#0083F0',
+    borderRadius: 20,
   },
   loginButtonText: {
     color: 'white',
     fontWeight: 700,
-    fontSize: width * 0.04,
+    fontSize: width * 0.045,
   },
 });
 

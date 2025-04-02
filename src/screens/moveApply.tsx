@@ -141,6 +141,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     gap: height * 0.03,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    elevation: 1,
   },
   checkButton: {
     paddingVertical: height * 0.03,

@@ -120,6 +120,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     gap: height * 0.02,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 3},
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    elevation: 1,
   },
   zzz: {
     width: width * 0.15,

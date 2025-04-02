@@ -52,10 +52,7 @@ const Login = () => {
 
 const styles = StyleSheet.create({
   main: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
+    flex: 1, // 중심화면 전체 사용이라네요
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#FCFCFC',
@@ -67,7 +64,6 @@ const styles = StyleSheet.create({
   loginWrap: {
     width: width * 0.8,
     paddingVertical: height * 0.05,
-    height: '90%',
     display: 'flex',
     gap: height * 0.02,
     flexDirection: 'column',
@@ -86,9 +82,15 @@ const styles = StyleSheet.create({
     paddingVertical: height * 0.03,
     paddingHorizontal: width * 0.03,
     borderColor: '#B7B7B7',
-    borderWidth: 1,
     borderRadius: 20,
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    elevation: 1,
   },
+
   loginButton: {
     width: '100%',
     paddingVertical: height * 0.025,

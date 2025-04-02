@@ -52,6 +52,11 @@ const styles = StyleSheet.create({
     width: '80%',
     position: 'relative',
     height: '100%',
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    elevation: 1,
   },
   contents: {
     width: '100%',
@@ -71,6 +76,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     gap: width * 0.01,
     borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 0},
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
   },
   checkTitle: {
     fontSize: width * 0.045,

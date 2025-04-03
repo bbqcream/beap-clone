@@ -14,7 +14,7 @@ import {useLogin} from '../../hooks/useLogin';
 const {width, height} = Dimensions.get('window');
 
 const Login = () => {
-  const {id, setId, pw, setPw, handleLogin, loading, error} = useLogin();
+  const {id, setId, pw, setPw, handleLogin, error} = useLogin();
 
   return (
     <SafeAreaView style={styles.main}>
@@ -26,7 +26,7 @@ const Login = () => {
         <View style={styles.inputWrap}>
           <TextInput
             placeholder="아이디"
-            style={styles.input}
+            style={[styles.input, {borderColor: error ? '#FF6C6C' : '#B7B7B7'}]}
             onSubmitEditing={Keyboard.dismiss}
             value={id}
             onChangeText={setId}
@@ -35,10 +35,20 @@ const Login = () => {
             onSubmitEditing={Keyboard.dismiss}
             secureTextEntry={true}
             placeholder="비밀번호"
-            style={styles.input}
+            style={[styles.input, {borderColor: error ? '#FF6C6C' : '#B7B7B7'}]}
             value={pw}
             onChangeText={setPw}
           />
+        </View>
+        <View>
+          <Text
+            style={{
+              textAlign: 'right',
+              color: '#FF6C6C',
+              display: error ? 'flex' : 'none',
+            }}>
+            비밀번호가 잘못되었습니다.
+          </Text>
         </View>
         <TouchableOpacity
           style={styles.loginButton}

@@ -12,19 +12,16 @@ import {
 import Button from '../components/button';
 import {useNavigation} from '@react-navigation/native';
 import CustomDropdown from '../components/customDropdown';
+import {RoomType} from '../../types/roomType.ts';
+import {Rooms} from '../../utils/room.ts';
 
 const {width, height} = Dimensions.get('window');
 
 const MoveApply = () => {
   const navigation = useNavigation();
-  const [timeItem, setTimeItem] = useState([
-    {label: '8교시', value: 'eight'},
-    {label: '9교시', value: 'nine'},
-    {label: '10교시', value: 'ten'},
-    {label: '11교시', value: 'eleven'},
-  ]);
+  const [room, setRoom] = useState<RoomType[]>(Rooms);
   const goToMoveTab = () => {
-    navigation.navigate('Tabs');
+    navigation.goBack();
   };
 
   return (
@@ -53,8 +50,8 @@ const MoveApply = () => {
               <Text style={styles.smallTitle}>이동 실</Text>
               <CustomDropdown
                 zindex={999}
-                items={timeItem}
-                setItems={setTimeItem}
+                items={room}
+                setItems={setRoom}
                 placeholder="이동할 실을 선택하세요."
               />
             </View>
@@ -62,7 +59,7 @@ const MoveApply = () => {
               <Text style={styles.smallTitle}>이동 교시</Text>
               <CustomDropdown
                 zindex={1}
-                items={timeItem}
+                items={time}
                 setItems={setTimeItem}
                 placeholder="교시를 선택하세요."
               />

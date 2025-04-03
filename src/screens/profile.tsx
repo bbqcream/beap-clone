@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Dimensions,
   SafeAreaView,
@@ -7,10 +7,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
+import getMyData from '../../store/getMyData.ts';
+import {useNavigation} from '@react-navigation/native';
 const {width, height} = Dimensions.get('window');
+const navigation = useNavigation();
 
 const Profile = () => {
+  const myData = getMyData(state => state.myData);
   return (
     <SafeAreaView style={styles.main}>
       <View style={styles.container}>
@@ -21,15 +24,19 @@ const Profile = () => {
           <View style={styles.checkWrap}>
             <View style={styles.form}>
               <Text style={styles.formText}>이름</Text>
-              <Text style={styles.formValue}>김성한</Text>
+              <Text style={styles.formValue}>{myData?.username}</Text>
             </View>
             <View style={styles.form}>
               <Text style={styles.formText}>실</Text>
-              <Text style={styles.formValue}>LAB 9, 10</Text>
+              <Text style={styles.formValue}>
+                {myData?.fixedRoom.name.replace('_', ', ')}
+              </Text>
             </View>
             <View style={styles.form}>
               <Text style={styles.formText}>학번</Text>
-              <Text style={styles.formValue}>1학년 2반 10번</Text>
+              <Text style={styles.formValue}>
+                {myData?.grade}학년 {myData?.cls}반 {myData?.num}번
+              </Text>
             </View>
           </View>
           <TouchableOpacity style={styles.checkWrap}>

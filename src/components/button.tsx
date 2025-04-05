@@ -15,7 +15,7 @@ const Button = ({action, title, color}: ButtonProps) => {
           paddingHorizontal: width * 0.05,
           paddingVertical: height * 0.02,
           backgroundColor: color,
-            zIndex:-2,
+          zIndex: -10,
         },
       ]}>
       <Text style={{fontSize: width * 0.04, color: 'white', fontWeight: '600'}}>

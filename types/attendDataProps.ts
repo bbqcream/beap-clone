@@ -1,11 +1,11 @@
-export interface AttendProps {
-  room:string;
-  reason:string;
-  period:number;
-  date:Date | null;
+export interface AttendData {
+  room: string;
+  reason: string;
+  period: number;
+  date: Date | null;
 }
 
-export interface AttendDataProps{
-  attendData : AttendProps | null;
-  setAttendData : (myData:AttendProps) => void
+export interface AttendState {
+  attendData: AttendData;
+  setAttendData: (updatedFields: Partial<AttendData>) => void;
 }

@@ -17,8 +17,10 @@ import {Rooms} from '../../utils/room.ts';
 import {TimeType} from '../../types/timeType.ts';
 import {Time} from '../../utils/time.ts';
 import attendState from '../../store/attendState.ts';
+import useShift from '../../hooks/useShift.ts';
 
 const {width, height} = Dimensions.get('window');
+const {shift} = useShift();
 
 const MoveApply = () => {
   const navigation = useNavigation();
@@ -50,9 +52,7 @@ const MoveApply = () => {
                 style={styles.inputText}
                 value={attendData?.reason}
                 onChangeText={text => {
-                  if (!attendData) return;
                   setAttendData({
-                    ...attendData,
                     reason: text,
                   });
                 }}
@@ -65,14 +65,7 @@ const MoveApply = () => {
                 items={room}
                 setItems={setRoom}
                 placeholder="이동할 실을 선택하세요."
-                attendData={attendData?.room ?? ''}
-                setAttendData={val => {
-                  if (!attendData) return;
-                  setAttendData({
-                    ...attendData,
-                    room: val as string,
-                  });
-                }}
+                changeValue="room"
               />
             </View>
             <View style={styles.formWrap}>
@@ -82,23 +75,11 @@ const MoveApply = () => {
                 items={time}
                 setItems={setTime}
                 placeholder="교시를 선택하세요."
-                attendData={attendData?.period ?? ''}
-                setAttendData={val => {
-                  if (!attendData) return;
-                  setAttendData({
-                    ...attendData,
-                    period: val as number,
-                  });
-                  console.log(attendData);
-                }}
+                changeValue="period"
               />
             </View>
           </View>
-          <Button
-            title="확인"
-            action={() => console.log('안녕')}
-            color="#323A45"
-          />
+          <Button title="확인" action={() => shift()} color="#323A45" />
         </View>
       </View>
     </SafeAreaView>

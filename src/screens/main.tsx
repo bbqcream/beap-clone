@@ -37,7 +37,14 @@ const Main = () => {
           <View style={styles.checkWrap}>
             <Text style={styles.title}>출석체크</Text>
             <View style={styles.checkStatWrap}>
-              <Image source={require('../assets/zzz.gif')} style={styles.zzz} />
+              <Image
+                source={
+                  attend
+                    ? require('../assets/zzz.gif')
+                    : require('../assets/smile.png')
+                }
+                style={attend ? styles.smile : styles.zzz}
+              />
               <Image
                 source={require('../assets/phone.png')}
                 style={styles.phone}
@@ -66,7 +73,6 @@ const Main = () => {
               </Text>
             </Text>
             <Text>출석 장소 : LAB 20실</Text>
-            <Text>출석 시간 : 7:06</Text>
           </View>
         </View>
       </View>
@@ -127,6 +133,13 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   zzz: {
+    width: width * 0.078,
+    height: width * 0.055,
+    position: 'absolute',
+    top: height * -0.03,
+    right: width * 0.12,
+  },
+  smile: {
     width: width * 0.15,
     height: width * 0.1,
     position: 'absolute',

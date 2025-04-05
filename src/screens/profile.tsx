@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   Dimensions,
   SafeAreaView,
@@ -8,12 +8,12 @@ import {
   View,
 } from 'react-native';
 import getMyData from '../../store/getMyData.ts';
-import {useNavigation} from '@react-navigation/native';
+import {useLogin} from '../../hooks/useLogin.ts';
 const {width, height} = Dimensions.get('window');
-const navigation = useNavigation();
 
 const Profile = () => {
   const myData = getMyData(state => state.myData);
+  const {handleLogout} = useLogin();
   return (
     <SafeAreaView style={styles.main}>
       <View style={styles.container}>
@@ -29,7 +29,7 @@ const Profile = () => {
             <View style={styles.form}>
               <Text style={styles.formText}>실</Text>
               <Text style={styles.formValue}>
-                {myData?.fixedRoom.name.replace('_', ', ')}
+                {myData?.fixedRoom?.name.replace('_', ', ')}
               </Text>
             </View>
             <View style={styles.form}>
@@ -39,7 +39,7 @@ const Profile = () => {
               </Text>
             </View>
           </View>
-          <TouchableOpacity style={styles.checkWrap}>
+          <TouchableOpacity style={styles.checkWrap} onPress={handleLogout}>
             <Text style={{color: '#FF6C6C', fontSize: width * 0.035}}>
               로그아웃
             </Text>

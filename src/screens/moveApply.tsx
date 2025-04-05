@@ -14,16 +14,20 @@ import {useNavigation} from '@react-navigation/native';
 import CustomDropdown from '../components/customDropdown';
 import {RoomType} from '../../types/roomType.ts';
 import {Rooms} from '../../utils/room.ts';
+import {TimeType} from '../../types/timeType.ts';
+import {Time} from '../../utils/time.ts';
+import attendState from '../../store/attendState.ts';
 
 const {width, height} = Dimensions.get('window');
 
 const MoveApply = () => {
   const navigation = useNavigation();
   const [room, setRoom] = useState<RoomType[]>(Rooms);
+  const [time, setTime] = useState<TimeType[]>(Time);
   const goToMoveTab = () => {
     navigation.goBack();
   };
-
+  const {attendData, setAttendData} = attendState();
   return (
     <SafeAreaView style={styles.main}>
       <View style={styles.container}>
@@ -44,6 +48,14 @@ const MoveApply = () => {
               <TextInput
                 placeholder="사유를 적어주세요."
                 style={styles.inputText}
+                value={attendData?.reason}
+                onChangeText={text => {
+                  if (!attendData) return;
+                  setAttendData({
+                    ...attendData,
+                    reason: text,
+                  });
+                }}
               />
             </View>
             <View style={styles.formWrap}>
@@ -53,15 +65,32 @@ const MoveApply = () => {
                 items={room}
                 setItems={setRoom}
                 placeholder="이동할 실을 선택하세요."
+                attendData={attendData?.room ?? ''}
+                setAttendData={val => {
+                  if (!attendData) return;
+                  setAttendData({
+                    ...attendData,
+                    room: val as string,
+                  });
+                }}
               />
             </View>
             <View style={styles.formWrap}>
               <Text style={styles.smallTitle}>이동 교시</Text>
               <CustomDropdown
-                zindex={1}
+                zindex={3}
                 items={time}
-                setItems={setTimeItem}
+                setItems={setTime}
                 placeholder="교시를 선택하세요."
+                attendData={attendData?.period ?? ''}
+                setAttendData={val => {
+                  if (!attendData) return;
+                  setAttendData({
+                    ...attendData,
+                    period: val as number,
+                  });
+                  console.log(attendData);
+                }}
               />
             </View>
           </View>

@@ -7,5 +7,5 @@ export interface GetmeElem {
     cls:number,
     num:number,
     status:string,
-    fixedRoom:FixedRoomProps,
+    fixedRoom:FixedRoomProps | null,
 }

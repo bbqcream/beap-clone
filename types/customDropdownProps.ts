@@ -1,8 +1,8 @@
 export interface CustomDropdownProps {
-  items: Array<{label: string; value: string}>;
-  setItems: React.Dispatch<
-    React.SetStateAction<Array<{label: string; value: string}>>
-  >;
+  items: any[];
+  setItems: React.Dispatch<React.SetStateAction<any[]>>;
   placeholder: string;
   zindex: number;
+  attendData: string | number | null;
+  setAttendData: (value: string | number) => void;
 }
